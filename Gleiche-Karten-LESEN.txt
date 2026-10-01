@@ -1,0 +1,8 @@
+Diese beiden Dateien in der GitHub-Repo an denselben Pfaden ersetzen:
+
+index.html
+assets/css/style.css
+
+Beide Einstiegskarten sind nebeneinander gleich hoch. Die Links am unteren Rand sind bündig ausgerichtet. Auf Handys stehen die Karten untereinander und behalten ihre natürliche Höhe. Texte und Bilder bleiben erhalten.
+
+Nach abgeschlossener GitHub-Pages-Veröffentlichung Seite neu laden.
