@@ -19,3 +19,23 @@
 .profile>.photo-slot{max-width:450px}
 @media(max-width:950px){.hero-image .photo-slot img{height:440px}}
 @media(max-width:650px){.hero-image .photo-slot img{height:350px}.team-card .photo-slot img{aspect-ratio:5/4}}
+
+/* One stable image area per profile, with discreet accessible controls. */
+.profile-gallery{width:100%;max-width:450px;min-width:0}
+.gallery-slides{border-radius:var(--radius);overflow:hidden;background:var(--paper)}
+.profile-gallery .photo-slot img{height:auto;aspect-ratio:4/5;object-fit:cover}
+.profile-gallery .image-placeholder{height:auto;min-height:0;aspect-ratio:4/5}
+.profile-gallery .photo-slot:not([hidden]){animation:gallery-fade .3s ease-out}
+.gallery-controls{padding-top:16px}
+.gallery-navigation,.gallery-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gallery-bottom{margin-top:12px;border-top:1px solid var(--line);padding-top:12px}
+.gallery-button,.gallery-choice,.gallery-toggle{font:500 13px var(--sans);color:var(--navy);background:white;border:1px solid var(--line);border-radius:4px;min-height:44px;padding:10px 13px;cursor:pointer}
+.gallery-button:hover,.gallery-toggle:hover{border-color:var(--green);color:var(--green)}
+.gallery-status{font-size:12px;color:var(--muted)}
+.gallery-choices{display:flex;gap:6px}
+.gallery-choice{min-width:44px}
+.gallery-choice[aria-pressed=true]{background:var(--navy);border-color:var(--navy);color:white}
+.gallery-toggle{font-size:11px;padding:8px 10px}
+@keyframes gallery-fade{from{opacity:.65}to{opacity:1}}
+@media(max-width:650px){.profile-gallery{max-width:none}.profile-gallery .photo-slot img,.profile-gallery .image-placeholder{aspect-ratio:4/5}}
+@media(prefers-reduced-motion:reduce){.profile-gallery .photo-slot:not([hidden]){animation:none}}

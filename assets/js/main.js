@@ -34,7 +34,7 @@ if(form){
  const imageDirectory = new URL('../images/', document.currentScript.src);
  const formats = ['webp','jpg','jpeg','png'];
  document.querySelectorAll('[data-photo]').forEach(slot => {
-  const img=slot.querySelector('img'); let attempt=0;
+  const img=slot.querySelector('img'); img.loading='eager'; let attempt=0;
   img.addEventListener('load',()=>{slot.querySelector('.image-placeholder').hidden=true;img.hidden=false;});
   img.addEventListener('error',()=>{attempt++;if(attempt<formats.length)load();});
   function load(){img.src=new URL(slot.dataset.photo+'.'+formats[attempt],imageDirectory).href;}
@@ -42,3 +42,29 @@ if(form){
   load();
  });
 })();
+
+/* Profile gallery: manual controls and slow autoplay, never persist state. */
+document.querySelectorAll('[data-gallery]').forEach(gallery=>{
+ const slides=[...gallery.querySelectorAll('.gallery-slides > figure')];
+ const controls=gallery.querySelector('.gallery-controls');
+ const toggle=gallery.querySelector('[data-toggle]');
+ const choices=[...gallery.querySelectorAll('[data-index]')];
+ const status=gallery.querySelector('.gallery-status');
+ const motion=matchMedia('(prefers-reduced-motion: reduce)');
+ let index=0,paused=motion.matches,hovered=false,focused=false,timer;
+ function schedule(){clearTimeout(timer);if(!paused&&!hovered&&!focused&&!document.hidden)timer=setTimeout(()=>show(index+1,false),7000);}
+ function show(next,manual){index=(next+slides.length)%slides.length;slides.forEach((slide,i)=>slide.hidden=i!==index);choices.forEach((button,i)=>button.setAttribute('aria-pressed',String(i===index)));status.setAttribute('aria-live',manual?'polite':'off');status.textContent='Foto '+(index+1)+' von '+slides.length;if(manual)paused=true;updateToggle();schedule();}
+ function updateToggle(){toggle.textContent=paused?'Automatik starten':'Automatik pausieren';}
+ gallery.querySelector('[data-prev]').addEventListener('click',()=>show(index-1,true));
+ gallery.querySelector('[data-next]').addEventListener('click',()=>show(index+1,true));
+ choices.forEach(button=>button.addEventListener('click',()=>show(Number(button.dataset.index),true)));
+ toggle.addEventListener('click',()=>{paused=!paused;updateToggle();schedule();});
+ gallery.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hovered=true;schedule();}});
+ gallery.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'){hovered=false;schedule();}});
+ gallery.addEventListener('focusin',()=>{focused=true;schedule();});
+ gallery.addEventListener('focusout',e=>{if(!gallery.contains(e.relatedTarget)){focused=false;schedule();}});
+ gallery.addEventListener('keydown',e=>{if(e.key==='ArrowLeft'||e.key==='ArrowRight'){e.preventDefault();show(index+(e.key==='ArrowLeft'?-1:1),true);}});
+ document.addEventListener('visibilitychange',schedule);
+ motion.addEventListener('change',()=>{if(motion.matches)paused=true;updateToggle();schedule();});
+ controls.hidden=false;updateToggle();schedule();
+});
