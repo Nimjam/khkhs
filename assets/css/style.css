@@ -208,3 +208,30 @@
 @media(max-width:950px){.home-team-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.audience-card{padding:28px}.audience-card h2{font-size:32px}}
 @media(max-width:760px){.audience-grid{grid-template-columns:minmax(0,1fr)}.home-personal h1{font-size:clamp(35px,7.7vw,48px)}.mandate-note{padding:24px}}
 @media(max-width:650px){.audience-section{padding-bottom:0}.audience-grid{gap:18px}.audience-card{padding:26px 22px}.audience-card h2{font-size:30px}.audience-links{gap:15px;flex-direction:column}.audience-phone{font-size:27px}.home-team-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 16px;margin:26px 0}.home-person{grid-column:span 2}.home-person:last-child{grid-column:2 / span 2}.home-person h3{font-size:16px;line-height:1.4}.home-person .placeholder-caption{font-size:16px}.home-person .placeholder-tag{font-size:7px;padding:4px 5px}.home-person .image-placeholder{padding:12px 8px}.home-person .text-link{font-size:11px}.mandate-intro{padding:20px}.home-personal .hero-image .photo-slot img{aspect-ratio:4/3}}
+
+/* Recruiting: visible early, approachable and clear for readers of every age. */
+.recruiting-entry{margin-block:32px 0;padding:32px 38px;border:1px solid #cdded5;border-radius:var(--radius);background:#edf4f1;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:35px;align-items:center}
+.recruiting-entry h2{font-size:35px;margin-bottom:16px}
+.recruiting-entry p:not(.eyebrow){margin:0;max-width:660px;font-size:16px}
+.recruiting-entry .eyebrow{font-size:12px}
+.recruiting-entry-actions{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+.career-intro-note{font-size:15px;color:var(--muted);margin:22px 0 0}
+.career-path-card,.career-detail-card{padding:30px;border:1px solid var(--line);border-radius:var(--radius)}
+.career-path-card{background:#f3f6f8}
+.career-path-card h3,.career-detail-card h3{font-size:24px}
+.career-path-card p,.career-detail-card p{font-size:16px}
+.application-process{list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.application-process li{padding-top:24px;border-top:1px solid var(--line);min-width:0}
+.application-process li>span{display:block;color:var(--green);font:28px var(--serif);margin-bottom:17px}
+.application-process h3{font-size:22px}
+.application-process p{font-size:16px}
+.career-demo-note{font-size:14px;color:var(--muted);margin-top:18px}
+.career-question{background:#f3f6f8;padding:35px 38px;display:flex;align-items:center;justify-content:space-between;gap:30px;border-radius:var(--radius);margin-bottom:var(--space)}
+.career-question h2{font-size:36px}
+.career-question p:not(.eyebrow){max-width:660px;margin-bottom:0}
+.career-question .button{flex:none}
+.home-person .text-link{font-size:14px}
+.audience-card .audience-note{font-size:14px}
+@media(max-width:950px){.career-question{display:block}.career-question .button{margin-top:24px}}
+@media(max-width:760px){.recruiting-entry{grid-template-columns:minmax(0,1fr);gap:24px}.application-process{grid-template-columns:minmax(0,1fr);gap:14px}.application-process li{padding-top:22px}.application-process p{margin-bottom:12px}}
+@media(max-width:650px){.recruiting-entry{padding:26px 22px;margin-top:24px}.recruiting-entry h2,.career-question h2{font-size:30px}.recruiting-entry .eyebrow{font-size:11px;line-height:1.7}.recruiting-entry-actions .button{width:100%}.career-path-card,.career-detail-card{padding:24px 22px}.career-path-card h3,.career-detail-card h3{font-size:22px}.career-question{padding:28px 22px}.career-question .button{width:100%}.home-person .text-link{font-size:14px}.home-person h3{font-size:17px}.audience-card .audience-note{font-size:14px}}
