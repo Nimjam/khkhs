@@ -68,3 +68,25 @@ document.querySelectorAll('[data-gallery]').forEach(gallery=>{
  motion.addEventListener('change',()=>{if(motion.matches)paused=true;updateToggle();schedule();});
  controls.hidden=false;updateToggle();schedule();
 });
+
+/* Create the external iframe only after an explicit visitor action. */
+document.querySelectorAll('[data-map]').forEach(block=>{
+ const button=block.querySelector('[data-map-toggle]');
+ const host=block.querySelector('.map-frame');
+ const preview=block.querySelector('.map-preview');
+ const status=block.querySelector('[data-map-status]');
+ button.hidden=false;
+ button.addEventListener('click',()=>{
+  const open=button.getAttribute('aria-expanded')==='true';
+  if(open){host.replaceChildren();host.hidden=true;preview.hidden=false;button.textContent='Google-Karte laden';button.setAttribute('aria-expanded','false');status.textContent='Die Google-Karte ist geschlossen.';return;}
+  const iframe=document.createElement('iframe');
+  iframe.title='Google Maps: Bahnhofstraße 13, 29640 Schneverdingen';
+  const url=new URL('https://www.google.com/maps');
+  url.searchParams.set('q','Bahnhofstraße 13, 29640 Schneverdingen');
+  url.searchParams.set('output','embed');url.searchParams.set('hl','de');url.searchParams.set('z','16');
+  iframe.src=url.href;iframe.referrerPolicy='no-referrer';iframe.allowFullscreen=true;
+  host.replaceChildren(iframe);host.hidden=false;preview.hidden=true;
+  button.textContent='Karte schließen';button.setAttribute('aria-expanded','true');
+  status.textContent='Die Verbindung zu Google ist aktiviert. Falls die Karte nicht angezeigt wird, nutzen Sie den Link zur Routenplanung.';
+ });
+});
