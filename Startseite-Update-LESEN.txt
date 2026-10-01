@@ -1,0 +1,14 @@
+STARTSEITEN-UPDATE
+
+ZIP entpacken und die drei Dateien mit denselben Pfaden in der GitHub-Repo ersetzen:
+index.html
+assets/css/style.css
+assets/images/BILDER.md
+
+Bestehende Bilder und andere Dateien behalten. Diese Anleitung nicht als Startseite hochladen.
+
+Änderungen: kompaktere Kontaktbereiche ohne erzwungene gleiche Höhe; Kontaktbutton für neue Mandanten; kurzer gemeinsamer Hinweis unter den Karten; offener Karrierebereich mit Foto und dezenterer Schaltfläche; doppelter Karriereblock unten entfernt.
+
+Karrierefoto: assets/images/karriere-team.jpg (alternativ .webp, .jpeg oder .png). Bildtitel/data-photo im HTML: karriere-team. Ein bereits vorhandenes Foto mit diesem Namen wird automatisch angezeigt. Ohne Foto bleibt ein Platzhalter.
+
+Nach GitHub-Upload und abgeschlossener Pages-Veröffentlichung Seite neu laden, bei Bedarf Strg+F5. Die CSS-Adresse der Startseite hat eine neue Versionskennung.
